@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "method": "fixed-size exact two-sided conditional McNemar rejection region; numerical unconditional probability",
+  "assumptions": {
+    "planned_sizes": [
+      40,
+      80,
+      120,
+      200,
+      400
+    ],
+    "probability_pair_is_discordant": "3/10",
+    "probability_candidate_wins_given_discordance": "3/4",
+    "familywise_alpha": "1/20",
+    "planned_candidate_count": 3,
+    "target_rejection_probability": "4/5"
+  },
+  "assumptions_sha256": "1e61156059c5d6d37177bc218289d688e9ea8bf60f7b63446647790fada124bc",
+  "comparison_threshold": "1/60",
+  "multiplicity_policy": "Bonferroni alpha/m: conservative per-candidate power bound for the full Holm family",
+  "candidate_minus_baseline_expected_percentage_points": 15.0,
+  "smallest_evaluated_size_meeting_target": 200,
+  "sizes": [
+    {
+      "paired_cases": 40,
+      "expected_discordant_pairs": 12.0,
+      "probability_reject_equal_discordance": 0.16494445245131276,
+      "probability_reject_with_candidate_ahead": 0.16493933744782266,
+      "meets_rejection_target_numerically": false
+    },
+    {
+      "paired_cases": 80,
+      "expected_discordant_pairs": 24.0,
+      "probability_reject_equal_discordance": 0.45566564876280274,
+      "probability_reject_with_candidate_ahead": 0.45566550052214727,
+      "meets_rejection_target_numerically": false
+    },
+    {
+      "paired_cases": 120,
+      "expected_discordant_pairs": 36.0,
+      "probability_reject_equal_discordance": 0.7026894971303423,
+      "probability_reject_with_candidate_ahead": 0.7026894889729931,
+      "meets_rejection_target_numerically": false
+    },
+    {
+      "paired_cases": 200,
+      "expected_discordant_pairs": 60.0,
+      "probability_reject_equal_discordance": 0.9325619932096577,
+      "probability_reject_with_candidate_ahead": 0.9325619931762673,
+      "meets_rejection_target_numerically": true
+    },
+    {
+      "paired_cases": 400,
+      "expected_discordant_pairs": 120.0,
+      "probability_reject_equal_discordance": 0.9993487894109117,
+      "probability_reject_with_candidate_ahead": 0.9993487894109115,
+      "meets_rejection_target_numerically": true
+    }
+  ],
+  "limitations": [
+    "Planning assumptions are supplied guesses, not estimated or observed benchmark evidence.",
+    "Independent identically distributed matched binary cases and one fixed final analysis are assumed.",
+    "Two-sided rejection can favor either system; inspect candidate-ahead probability separately.",
+    "For multiple candidates this is per-candidate power, not probability all or any candidates win.",
+    "Bonferroni bounds Holm power without a joint model; it does not calculate exact Holm power.",
+    "The selected size is smallest only among evaluated sizes, not a guaranteed global minimum.",
+    "Planning several sizes is not permission to test repeatedly or stop after significance.",
+    "Exact integer rejection thresholds; floating point power has no certified numerical error bound.",
+    "Concordant pass/fail composition and marginal pass rates are not identified by this model.",
+    "The assumptions hash is a reproducibility fingerprint, not a timestamp or preregistration proof."
+  ],
+  "data_kind": "hypothetical_planning_demonstration"
+}

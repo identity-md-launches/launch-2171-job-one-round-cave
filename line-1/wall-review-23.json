@@ -1,0 +1,49 @@
+{
+  "mark_number": 23,
+  "name": "Enough Stones Before the Trial",
+  "wall": {
+    "path": "artifacts/line-1/wall-v3.png",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "bit_depth": 8,
+    "color_model": "RGB",
+    "bytes": 2839380,
+    "sha256": "3cb4e3592f763bd8a2cbf9b0fa7288152761ec8d015c387ba4afbc0e7b66699b"
+  },
+  "current_wall_alias": "artifacts/line-1/wall.png -> wall-v3.png",
+  "preview": {
+    "path": "dist/line-1/23.jpg",
+    "format": "JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 65600,
+    "sha256": "51dda725e44664d3fe03f1f4c9d441694c020069bc2b75df024a36b08bffb9df"
+  },
+  "edit_target": "artifacts/line-1/wall.png (predecessor, identical to wall-v2.png)",
+  "ancestral_png_sha256": "2a501a82b9c89d4dd4f9a67eb1c63fd98fcd555ee58e1be7b6b7ca94b5007fa5",
+  "generator": "built-in image_gen.imagegen; local Node finishing preserves original pixels outside patch",
+  "prompt": "Use case: precise-object-edit. Edit target: the supplied square ancestral cave wall, 1254 by 1254. Add ONE small cave-pigment mark on the open rock ABOVE the lower-left Pepe, in the empty area approximately x 290 to 580 and y 300 to 535 of the original. The mark is a small curved ochre animal-skin pouch spilling a modest cluster of small irregular charcoal pebbles; beside it two simple red-ochre curved brackets cradle a few more widely spaced pebbles, evoking counting enough cases before a trial. Simple prehistoric burnt-stick and thumb-dab artwork, no modern objects. STRICT INVARIANTS: preserve both existing Pepes exactly (lower left and upper right), their balance and branching stone paths, all ancestral paint, the precise rock texture, cracks, roots, light, warm colors and original framing. Add pigment only within that empty upper-left patch; do not redraw, shift, erase, recolor or cover any old mark. Keep exact original square canvas size. Existing figures are Pepe the frog with broad mouth and heavy-lidded eyes, earth pigment ochre/chalk/charcoal on bare rock. No new frog or human or hand or handprint; existing hands stay concealed. No writing of any kind, no letters, numbers, words, captions, logos, signatures, watermark, borders, frames, political or hateful symbols. A modest additive hand-painted mark, not a new scene. Output should be an actual PNG.",
+  "pixel_preservation": {
+    "changed_patch_xyxy_exclusive": [
+      305,
+      322,
+      649,
+      535
+    ],
+    "changed_pixels": 71711,
+    "all_pixels_outside_patch_identical_to_ancestor": true,
+    "edge_blend_pixels": 12
+  },
+  "visual_review": {
+    "method": "Inspected final full PNG and separately decoded 512-pixel JPEG with view_image.",
+    "pepe": "Both ancestral ochre/charcoal cave Pepes have wide mouths and heavy-lidded eyes.",
+    "ancestry": "Earlier two Pepes, balance, and branching pebble paths lie outside the changed patch and are exactly retained.",
+    "new_mark": "An ochre pouch spills small charcoal stones; curved ochre bounds hold several more.",
+    "rock": "Original square framing, torchlight, rock, cracks and roots retained exactly outside addition patch.",
+    "hands": "Both ancestral figures keep their hands concealed. No visible hand or handprint; no visible digits to count.",
+    "forbidden_content": "No observed lettering, numbers, captions, signatures, logos, watermarks, frames, real people or prohibited symbols.",
+    "unmet_visual_requirements": [],
+    "limitations": "Local visual judgment. The rock within the addition patch is generatively edited and blended; it is not pixel-identical to the ancestral bare rock there."
+  }
+}

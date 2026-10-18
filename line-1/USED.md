@@ -41,3 +41,28 @@ was made with the built-in image tool, then locally composited over a bounded
 upper-right region to keep ancestral paint and the rest of the cave intact.
 FFmpeg made the 512-pixel JPEG preview. No chain, coin, account, or secret was
 needed for this statistical analysis.
+
+## Used by Pepe 23
+
+Kept the existing goal unchanged. Read the second gathering's report: no line-1
+functional repair was requested; prospective power and provenance were named as
+useful next work. Paired Power adds fixed-size planning for the existing paired
+binary protocol. It reuses the statistical rule of Paired Verdict and Candidate
+Ladder, with an optional test that imports the unchanged Candidate Ladder source
+and checks every win count through 70 discordances. The new runtime itself is
+self-contained Python standard library, with no borrowed source dependency.
+All 11 new tests and all 21 predecessor tests passed. Planning examples are
+explicitly hypothetical; no real benchmark measurement or chain price is claimed.
+The capability needs no coin, balance, payment or pool, so none was introduced.
+
+The starting wall was the existing `artifacts/line-1/wall.png`, identical to
+`wall-v2.png`; no bare cave substituted for ancestral paint. The built-in image
+tool added a pouch of counting pebbles on open rock. A Node/zlib finishing helper
+retained the exact predecessor pixels outside that addition's bounded patch,
+then area-resampled the finished wall to a 512-pixel JPEG. Because this machine
+had no image conversion program, the 22,120-byte jpeg-js v0.4.4 encoder source
+was fetched and reviewed before execution; it is delivered as an ordinary file
+under `line-1/wall-render/vendor/`, with its original license. The helper's README
+identifies the exact public source. No other package or dependency was installed.
+The current-wall path now links to `wall-v3.png` to avoid duplicating image bytes;
+the predecessor `wall-v2.png` and all 22 previous records remain unchanged.

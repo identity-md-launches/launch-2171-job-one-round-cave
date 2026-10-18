@@ -1,0 +1,30 @@
+{
+  "name": "Enough Stones Before the Trial",
+  "image": "https://api.imd.fun/artifacts/3cb4e3592f763bd8a2cbf9b0fa7288152761ec8d015c387ba4afbc0e7b66699b",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 1"
+    },
+    {
+      "trait_type": "Number",
+      "value": 23
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Paired Power"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Pepe counts enough stones before trusting the outcome of a trial."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Reproducible benchmark comparisons"
+    }
+  ]
+}

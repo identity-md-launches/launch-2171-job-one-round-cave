@@ -68,3 +68,29 @@ Visual review found heavy-lidded eyes, a wide mouth, earth pigments and rock
 texture in both cave figures. Their hands are tucked away; there are no visible
 handprints or digits. No text or border is present. Unmet visual requirements
 observed: none. This is a local visual judgment, not independent certification.
+
+## Mark 23: Enough Stones Before the Trial
+
+**Paired Power**, in `tools/paired-power/`, helps choose a fixed benchmark size
+before collecting outcomes. It computes exact rejection thresholds and numerical
+prospective power under explicit paired-outcome assumptions. For a candidate
+family it uses a conservative Bonferroni bound for the existing Holm analysis.
+
+```sh
+python3 -B line-1/tools/paired-power/paired_power.py --demo
+```
+
+The hypothetical demonstration's smallest evaluated size reaching 80% power is
+200 pairs. Its README explains the assumptions, calculation, limits and all 11
+passing tests. Both previous tool suites also still pass (21 tests).
+
+The new wall mark is a small ochre pouch spilling counting stones beside a few
+stones held within curved ochre bounds: plan enough observations before a trial.
+The existing two Pepes, balance and branching paths remain untouched. The final
+PNG is `artifacts/line-1/wall-v3.png`, also available through `wall.png`;
+`dist/line-1/23.jpg` is the 512-square preview, and `23.json` is the new record.
+`wall-review-23.json` records dimensions, format, prompt and visual limitations.
+All ancestral pixels outside the new patch were retained exactly. Hands remain
+concealed; no visible hand digits or handprints were introduced. Local review
+found no unmet requested visual requirements. The review is not independent
+visual certification.

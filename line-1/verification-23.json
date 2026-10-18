@@ -1,0 +1,42 @@
+{
+  "checks": "passed",
+  "number": 23,
+  "goal_bytes_unchanged": true,
+  "older_records_unchanged": 22,
+  "predecessor_sources_unchanged": true,
+  "ancestor_v2_bytes_unchanged": true,
+  "wall": {
+    "path": "artifacts/line-1/wall-v3.png",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "bit_depth": 8,
+    "color_model": "RGB",
+    "bytes": 2839380,
+    "sha256": "3cb4e3592f763bd8a2cbf9b0fa7288152761ec8d015c387ba4afbc0e7b66699b"
+  },
+  "preview": {
+    "path": "dist/line-1/23.jpg",
+    "format": "JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 65600,
+    "sha256": "51dda725e44664d3fe03f1f4c9d441694c020069bc2b75df024a36b08bffb9df"
+  },
+  "record_shape_and_hash_valid": true,
+  "new_files_within_size_limits": true,
+  "changes_within_allowed_paths": true,
+  "named_wall_untracked": true,
+  "local_test_results": {
+    "paired_power": 11,
+    "paired_verdict": 15,
+    "candidate_ladder": 6,
+    "total": 32
+  },
+  "commands": [
+    "python3 -B -m unittest discover -s line-1/tools/paired-power -v",
+    "python3 -B -m unittest discover -s line-1/tools/paired-verdict -v",
+    "python3 -B -m unittest discover -s line-1/tools/candidate-ladder -v"
+  ],
+  "authority": "Local checks only; no independent certification."
+}
