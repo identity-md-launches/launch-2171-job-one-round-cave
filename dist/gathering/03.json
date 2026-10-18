@@ -1,10 +1,30 @@
 {
-  "name": "Not painted yet",
-  "image": "https://api.imd.fun/artifacts/1694079b8c096876644b7db6f84112f2550b53ad024540401ad702809cb35941",
+  "name": "The Evidence Bundle",
+  "image": "https://api.imd.fun/artifacts/1dfc13ced7ee35bdbaae5439246fd231f19d62be8818ee18109a3b8d0735760e",
   "attributes": [
     {
       "trait_type": "Cave",
       "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Gathering"
+    },
+    {
+      "trait_type": "Number",
+      "value": 3
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Replay Review"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Pepe carries shared evidence onward in a charcoal bundle beside the older measured stones."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Gathering"
     }
   ]
 }

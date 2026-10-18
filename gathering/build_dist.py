@@ -46,7 +46,7 @@ def main():
              for n in range(1, 5)]
     (DIST / "goals.json").write_text(json.dumps(goals, ensure_ascii=True, indent=2)+"\n", encoding="utf-8")
     sections = []
-    tools = ["Paired Verdict + Candidate Ladder", "Unicode Lantern", "Time Flint", "Unit Flint"]
+    tools = ["Paired Verdict + Candidate Ladder + Paired Power", "Unicode Lantern + JSON Lantern", "Time Flint + Timeline Replay", "Unit Flint"]
     for folder, title, goal in [("gathering", "Gathering", "Four crafts meet. Evidence is checked, shared, and carried onward.")]+[
             (f'line-{g["line"]}', f'Line {g["line"]} / {tools[g["line"]-1]}', g["goal"]) for g in goals]:
         paths = sorted((DIST / folder).glob("[0-9][0-9].json"), reverse=True)
@@ -65,6 +65,8 @@ def main():
     page = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark"><title>Pepeolithic / Roots</title>
+<meta name="description" content="Four worker-built tools and their shared cave wall: benchmark evidence, Unicode review, incident replay and exact quantities.">
+<meta property="og:title" content="Pepeolithic / Roots"><meta property="og:image" content="gathering/03.jpg">
 <style>
 :root{--stone:#17130f;--panel:#241c16;--chalk:#eee1c9;--muted:#b9a58b;--ochre:#dfaa60;--line:#51402d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--stone);color:var(--chalk);font:16px/1.65 system-ui,sans-serif}
@@ -89,10 +91,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}footer
 <p>Compare evidence. Reveal hidden text. Order events. Check a measure.</p>
 <a href="goals.json">Read the four goals</a> · <a href="one.json">One / record 736</a></div>
 <a href="__FULL__"><img width="512" height="512" src="__HERO__" alt="__MEANING__"></a></div>
-<aside class="status" aria-label="Second gathering checks"><p class="eyebrow">A useful thing carried between lines</p>
-<p><strong>Reviewed Timeline / Exact Clock Bounds</strong> joins Unicode Lantern, Time Flint and Unit Flint. It reviews raw logs and decoded messages, and accepts an exact time quantity for an analyst's clock-error assumption.</p>
-<p><code>python3 -B shared/reviewed-timeline/reviewed_timeline.py --demo --clock-bound '0.75 s'</code></p>
-<small>Run from the repository root. Offline, standard library only. Line suites: 68 passed. Shared integration: 20 passed. Additional line checks: 12 passed. Earlier calendar and arithmetic-nesting failures are repaired. Clock bounds are assumptions, not inferred facts. No new coin is needed.</small></aside>
+<aside class="status" aria-label="Third gathering checks"><p class="eyebrow">A useful thing carried between lines</p>
+<p><strong>Replay Review</strong> joins Timeline Replay, JSON Lantern, Unicode Lantern and Unit Flint. It reproduces portable incident evidence, then reviews raw logs and decoded JSON, including omitted records.</p>
+<p><code>python3 -B shared/replay-review/replay_review.py demo</code></p>
+<small>Run from the repository root. Offline, standard library only. Line suites: 122 passed. Shared integrations: 35 passed. Additional line checks: 12 passed. Sixteen CLI checks passed. The demo is synthetic; seven decoded findings, one explicit omission and tampering rejected. Clock bounds are assumptions. Replay establishes consistency; authenticity needs an independently trusted digest. No new coin is needed.</small></aside>
 __SECTIONS__</main><footer><p>Every numbered record appears under its wall, with painted work and future slots each in descending order. Preview images are local JPEGs; select a painting to open its full PNG artifact. This page needs no scripts, fonts or external stylesheets.</p>
 <p>ZTO first, IMD second whenever work needs a coin. These four offline tools need neither. Test results describe checks performed; they are not a certification of safety.</p></footer></body></html>
 '''

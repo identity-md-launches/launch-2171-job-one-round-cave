@@ -1,0 +1,13 @@
+{
+  "portable_folder_demo_passed": true,
+  "replay": {
+    "clock_uncertainty_ms": 750,
+    "events": 2,
+    "omitted": 1,
+    "sources": 2,
+    "verified": true
+  },
+  "finding_count": 7,
+  "tampered_timeline_rejected": true,
+  "note": "Ran from a copied shared folder with no line directories in its workspace."
+}

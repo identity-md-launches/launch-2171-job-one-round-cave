@@ -1,166 +1,455 @@
-[
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-1/tools/paired-verdict/paired_verdict.py",
-      "--demo"
-    ],
-    "exit_code": 0,
-    "result": {
-      "paired_cases": 40,
-      "interpretation": "evidence_favors_candidate"
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-1/tools/paired-verdict/paired_verdict.py",
-      "--input",
-      "line-1/tools/paired-verdict/example.csv",
-      "--alpha",
-      "0.05"
-    ],
-    "exit_code": 0,
-    "result": {
-      "paired_cases": 3,
-      "interpretation": "insufficient_evidence_of_difference"
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-1/tools/candidate-ladder/candidate_ladder.py",
-      "--demo"
-    ],
-    "exit_code": 0,
-    "result": {
-      "paired_cases": 40,
-      "adjusted_p_values": [
-        "0.00146484375",
-        "0.21875",
-        "1"
-      ]
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-2/tools/unicode-lantern/unicode_lantern.py",
-      "--demo"
-    ],
-    "exit_code": 0,
-    "result": {
-      "finding_count": 7,
-      "assessment": "review-required"
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-3/tools/time-flint/time_flint.py",
-      "--demo",
-      "--json"
-    ],
-    "exit_code": 0,
-    "result": {
-      "overlap_groups": [
-        1,
-        1,
-        1,
-        1
-      ]
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-3/tools/time-flint/time_flint.py",
-      "--json",
-      "line-3/tools/time-flint/examples/client.txt",
-      "line-3/tools/time-flint/examples/server.jsonl"
-    ],
-    "exit_code": 0,
-    "result": {
-      "overlap_groups": [
-        1,
-        2
-      ]
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-3/tools/time-flint/time_flint.py",
-      "--clock-uncertainty-ms",
-      "750",
-      "--json",
-      "line-3/tools/time-flint/examples/client.txt",
-      "line-3/tools/time-flint/examples/server.jsonl"
-    ],
-    "exit_code": 0,
-    "result": {
-      "overlap_groups": [
-        1,
-        1
-      ]
-    }
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-4/tools/unit-flint/unit_flint.py",
-      "1.5 km + 350 m",
-      "--to",
-      "m"
-    ],
-    "exit_code": 0,
-    "result": "1850 m"
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "line-4/tools/unit-flint/unit_flint.py",
-      "10 km / 2 h",
-      "--to",
-      "m/s"
-    ],
-    "exit_code": 0,
-    "result": "25/18 m/s"
-  },
-  {
-    "command": [
-      "python3",
-      "-B",
-      "shared/reviewed-timeline/reviewed_timeline.py",
-      "--demo",
-      "--clock-bound",
-      "0.75 s"
-    ],
-    "exit_code": 0,
-    "result": {
-      "assessment": "review-required",
-      "clock_bound": {
-        "conversion": "exact; no rounding",
-        "expression_escaped": "0.75 s",
-        "milliseconds": 750
-      },
-      "overlap_groups": [
-        1,
-        1
+{
+  "checks_passed": true,
+  "examples": [
+    {
+      "name": "paired verdict demo",
+      "command": [
+        "python3",
+        "-B",
+        "line-1/tools/paired-verdict/paired_verdict.py",
+        "--demo"
       ],
-      "message_findings": [
-        4,
-        0
-      ]
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "paired_cases": 40,
+        "table": {
+          "both_pass": 24,
+          "both_fail": 4,
+          "candidate_only_pass": 10,
+          "baseline_only_pass": 2
+        },
+        "test": {
+          "name": "two-sided exact conditional McNemar",
+          "alpha": "0.05",
+          "discordant_pairs": 12,
+          "p_value_decimal_16_digits": "0.03857421875",
+          "p_exact_numerator": "158",
+          "p_exact_denominator_power_of_two": 12,
+          "reject_equal_discordance_at_alpha": true,
+          "observed_direction": "candidate"
+        }
+      }
+    },
+    {
+      "name": "paired verdict CSV",
+      "command": [
+        "python3",
+        "-B",
+        "line-1/tools/paired-verdict/paired_verdict.py",
+        "--input",
+        "line-1/tools/paired-verdict/example.csv"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "paired_cases": 3,
+        "table": {
+          "both_pass": 1,
+          "both_fail": 0,
+          "candidate_only_pass": 1,
+          "baseline_only_pass": 1
+        },
+        "test": {
+          "name": "two-sided exact conditional McNemar",
+          "alpha": "0.05",
+          "discordant_pairs": 2,
+          "p_value_decimal_16_digits": "1",
+          "p_exact_numerator": "4",
+          "p_exact_denominator_power_of_two": 2,
+          "reject_equal_discordance_at_alpha": false,
+          "observed_direction": "tie"
+        }
+      }
+    },
+    {
+      "name": "candidate ladder",
+      "command": [
+        "python3",
+        "-B",
+        "line-1/tools/candidate-ladder/candidate_ladder.py",
+        "--demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "paired_cases": 40,
+        "candidates": [
+          {
+            "name": "swift",
+            "candidate_passes": 32,
+            "candidate_only_pass": 12,
+            "baseline_only_pass": 0,
+            "candidate_minus_baseline_percentage_points": 30.0,
+            "exact_two_sided_p": {
+              "numerator": "1",
+              "denominator": "2048",
+              "decimal_16_digits": "0.00048828125"
+            },
+            "holm_rank": 1,
+            "holm_adjusted_p": {
+              "numerator": "3",
+              "denominator": "2048",
+              "decimal_16_digits": "0.00146484375"
+            },
+            "familywise_reject_equal_discordance": true,
+            "observed_direction": "candidate"
+          },
+          {
+            "name": "steady",
+            "candidate_passes": 26,
+            "candidate_only_pass": 8,
+            "baseline_only_pass": 2,
+            "candidate_minus_baseline_percentage_points": 15.0,
+            "exact_two_sided_p": {
+              "numerator": "7",
+              "denominator": "64",
+              "decimal_16_digits": "0.109375"
+            },
+            "holm_rank": 2,
+            "holm_adjusted_p": {
+              "numerator": "7",
+              "denominator": "32",
+              "decimal_16_digits": "0.21875"
+            },
+            "familywise_reject_equal_discordance": false,
+            "observed_direction": "candidate"
+          },
+          {
+            "name": "noisy",
+            "candidate_passes": 20,
+            "candidate_only_pass": 5,
+            "baseline_only_pass": 5,
+            "candidate_minus_baseline_percentage_points": 0.0,
+            "exact_two_sided_p": {
+              "numerator": "1",
+              "denominator": "1",
+              "decimal_16_digits": "1"
+            },
+            "holm_rank": 3,
+            "holm_adjusted_p": {
+              "numerator": "1",
+              "denominator": "1",
+              "decimal_16_digits": "1"
+            },
+            "familywise_reject_equal_discordance": false,
+            "observed_direction": "tie"
+          }
+        ]
+      }
+    },
+    {
+      "name": "prospective power",
+      "command": [
+        "python3",
+        "-B",
+        "line-1/tools/paired-power/paired_power.py",
+        "--demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "comparison_threshold": "1/60",
+        "smallest_evaluated_size_meeting_target": 200,
+        "sizes": [
+          {
+            "paired_cases": 40,
+            "expected_discordant_pairs": 12.0,
+            "probability_reject_equal_discordance": 0.16494445245131276,
+            "probability_reject_with_candidate_ahead": 0.16493933744782266,
+            "meets_rejection_target_numerically": false
+          },
+          {
+            "paired_cases": 80,
+            "expected_discordant_pairs": 24.0,
+            "probability_reject_equal_discordance": 0.45566564876280274,
+            "probability_reject_with_candidate_ahead": 0.45566550052214727,
+            "meets_rejection_target_numerically": false
+          },
+          {
+            "paired_cases": 120,
+            "expected_discordant_pairs": 36.0,
+            "probability_reject_equal_discordance": 0.7026894971303423,
+            "probability_reject_with_candidate_ahead": 0.7026894889729931,
+            "meets_rejection_target_numerically": false
+          },
+          {
+            "paired_cases": 200,
+            "expected_discordant_pairs": 60.0,
+            "probability_reject_equal_discordance": 0.9325619932096577,
+            "probability_reject_with_candidate_ahead": 0.9325619931762673,
+            "meets_rejection_target_numerically": true
+          },
+          {
+            "paired_cases": 400,
+            "expected_discordant_pairs": 120.0,
+            "probability_reject_equal_discordance": 0.9993487894109117,
+            "probability_reject_with_candidate_ahead": 0.9993487894109115,
+            "meets_rejection_target_numerically": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "raw Unicode",
+      "command": [
+        "python3",
+        "-B",
+        "line-2/tools/unicode-lantern/unicode_lantern.py",
+        "--demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "finding_count": 7,
+        "assessment": "review-required",
+        "sha256": "7f17bd4cb302aff6547f61f8bb97d85403b5290806ac642e472ca0e146553ddc"
+      }
+    },
+    {
+      "name": "decoded JSON",
+      "command": [
+        "python3",
+        "-B",
+        "line-2/tools/json-lantern/json_lantern.py",
+        "--demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "finding_count": 6,
+        "assessment": "review-required",
+        "sha256": "066cc7a87f503dd2da5679a1168e6b9a77fd682e0f3408799e58083ddeabf42c"
+      }
+    },
+    {
+      "name": "actual record JSON",
+      "command": [
+        "python3",
+        "-B",
+        "line-2/tools/json-lantern/json_lantern.py",
+        "--file",
+        "dist/line-2/22.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "finding_count": 0,
+        "assessment": "no-covered-patterns-found",
+        "sha256": "395bd8167eeb9441c1c082cdb26bf4953f7aafb2e7e60bd28616c05c98a50290"
+      }
+    },
+    {
+      "name": "timeline demo",
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/time-flint/time_flint.py",
+        "--demo",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "events": 4,
+        "omitted": 0,
+        "overlap_groups": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "timeline supplied fixtures",
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/time-flint/time_flint.py",
+        "--json",
+        "--clock-uncertainty-ms",
+        "750",
+        "line-3/tools/time-flint/examples/client.txt",
+        "line-3/tools/time-flint/examples/server.jsonl"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "events": 2,
+        "omitted": 0,
+        "overlap_groups": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "timeline replay",
+      "command": [
+        "python3",
+        "-B",
+        "line-3/tools/timeline-replay/timeline_replay.py",
+        "demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "replay": {
+          "clock_uncertainty_ms": 750,
+          "events": 2,
+          "omitted": 1,
+          "sources": 2,
+          "verified": true
+        },
+        "tampered_report_rejected": true
+      }
+    },
+    {
+      "name": "exact distance",
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/unit-flint/unit_flint.py",
+        "1.5 km + 350 m",
+        "--to",
+        "m",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "value": "1850",
+        "unit": "m"
+      }
+    },
+    {
+      "name": "exact matching claim",
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/unit-flint/unit_flint.py",
+        "10 km / 2 h",
+        "--expect",
+        "5 km/h",
+        "--to",
+        "m/s",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "value": "25/18",
+        "unit": "m/s",
+        "check": {
+          "expression": "5 km/h",
+          "expected_base_value": "25/18",
+          "difference_base_value": "0",
+          "base_unit": "m*s^-1",
+          "matches": true
+        }
+      }
+    },
+    {
+      "name": "exact mismatching claim",
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/unit-flint/unit_flint.py",
+        "10 km / 2 h",
+        "--expect",
+        "6 km/h",
+        "--to",
+        "m/s",
+        "--json"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true,
+      "observed": {
+        "value": "25/18",
+        "unit": "m/s",
+        "check": {
+          "expression": "6 km/h",
+          "expected_base_value": "5/3",
+          "difference_base_value": "-5/18",
+          "base_unit": "m*s^-1",
+          "matches": false
+        }
+      }
+    },
+    {
+      "name": "invalid dimension claim",
+      "command": [
+        "python3",
+        "-B",
+        "line-4/tools/unit-flint/unit_flint.py",
+        "0 m",
+        "--expect",
+        "0 s",
+        "--json"
+      ],
+      "expected_exit": 2,
+      "exit_code": 2,
+      "passed": true,
+      "diagnostic": "unit-flint: expected dimension s does not match result m\n  0 s\n  ^\n"
+    },
+    {
+      "name": "shared reviewed timeline",
+      "command": [
+        "python3",
+        "-B",
+        "shared/reviewed-timeline/reviewed_timeline.py",
+        "--demo",
+        "--clock-bound",
+        "0.75 s"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "assessment": "review-required"
+      }
+    },
+    {
+      "name": "shared replay review",
+      "command": [
+        "python3",
+        "-B",
+        "shared/replay-review/replay_review.py",
+        "demo"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "observed": {
+        "finding_count": 7,
+        "assessment": "review-required",
+        "replay": {
+          "clock_uncertainty_ms": 750,
+          "events": 2,
+          "omitted": 1,
+          "sources": 2,
+          "verified": true
+        },
+        "tampered_timeline_rejected": true,
+        "review_errors": 0,
+        "json_lines_checked": 2,
+        "digest_pin_checked": true
+      }
     }
-  }
-]
+  ],
+  "note": "Demos and fixtures are synthetic; the actual record scan checks real workspace bytes. No live system performance or incident is claimed."
+}

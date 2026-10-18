@@ -1,22 +1,20 @@
 {
-  "wall": "artifacts/gathering/wall-v2.png",
+  "wall": "artifacts/gathering/wall-v3.png",
   "format": "PNG RGB8",
   "width": 1254,
   "height": 1254,
-  "wall_sha256": "1a1d749d89e85f417a65f80b9db8b8c67e7e52d4a4c0200d15fe6de091ec3e7d",
-  "source_wall": "artifacts/gathering/wall.png before this edit (Gathering 01)",
-  "source_sha256": "ca96f442fb86d3e9e08604a57fbe062819a816fd69c22c9396bffe168ece0af3",
-  "review_method": "Assistant visual inspection of the source wall, generated full-resolution result and separately decoded 512px JPEG using image tools.",
+  "wall_sha256": "1dfc13ced7ee35bdbaae5439246fd231f19d62be8818ee18109a3b8d0735760e",
+  "source_wall": "artifacts/gathering/wall-v2.png (Gathering 02)",
+  "source_sha256": "1a1d749d89e85f417a65f80b9db8b8c67e7e52d4a4c0200d15fe6de091ec3e7d",
+  "review_method": "Visual inspection of source and generated full wall; final local PNG and JPEG checked separately.",
   "observations": [
-    "Square size, rock, cracks, roots, torchlight and framing visually retained.",
-    "The ancestral seated Pepe, four ochre trails and central chalk stone remain in position.",
-    "New small ochre/chalk stones on a charcoal trail between red-ochre curves above Pepe.",
-    "Pepe retains a wide mouth and big heavy-lidded eyes; rough flat worn earth pigments.",
-    "Both visible hands counted as five digits: four fingers and one thumb each; no new hands or handprints.",
-    "No observed letters, numbers, captions, signatures, logos, watermarks, borders, frames, real people or prohibited symbols."
+    "Original square rock, roots, cracks, torchlight and framing visually retained.",
+    "Seated Pepe, four red/yellow trails, chalk meeting stone and bounded pebble trail remain in position.",
+    "New charcoal evidence loop with three chalk dabs and one red ochre closure lies left of Pepe head without touching ancestral paint.",
+    "Pepe has a wide mouth and heavy-lidded eyes. Both visible hands counted as five digits: four fingers and one thumb each. No hands or stencils added.",
+    "Earth pigments only; no observed writing, captions, numbers, signatures, logos, watermarks, borders, real people, political or hateful symbols."
   ],
-  "limits": "Generative editing is visually reviewed; unchanged pixels and all visual constraints are not mechanically certified. The prompt requested four small stones; the image contains five, which does not violate a requested visual constraint.",
+  "limits": "Generative editing preserves the wall by visual comparison, not exact pixel identity. Structural checks do not certify visual quality.",
   "unmet_visual_requirements": [],
-  "tool": "built-in image_gen edit",
-  "prompt": "Use case: precise-object-edit. This exact 1254 x 1254 square image is the edit target, an ancestral prehistoric cave painting that must be preserved. Keep its exact dimensions, warm rough stone, cracks, roots, torchlight, framing, every existing pigment mark, seated Pepe figure, hands, feet, four ochre trails and central chalk stone in their original positions, without repainting or redrawing them. Add ONLY one small new cluster of worn earth-pigment marks on the bare rock ABOVE the existing Pepe head, below the large upper diagonal crack, around the upper middle-right open patch. The new mark: four small irregular ochre-and-chalk pebbles in a short winding charcoal trail, sheltered between two loose curved red-ochre strokes that express a shared uncertainty bound. It should be spare, hand-rubbed, primitive and uneven, clearly flat pigment showing the original stone texture through it. Existing Pepe the frog remains the main figure with heavy-lidded eyes and wide mouth. Preserve his two original five-digit hands, four fingers and one thumb on each. Do not add people, frogs, hands or handprints. Earth pigments only: red and yellow ochre, charcoal black, chalk white. No letters, numbers, captions, signatures, logos, watermarks, borders, frames, photographs, 3D renders, political or hateful symbols. Add this little mark without removing, moving, cleaning, covering, or redrawing ancestral marks. Save the final edited image in the workspace at artifacts/gathering/wall-v2.png if a save destination is supported."
+  "tool": "built-in image_gen edit; workspace import tool"
 }

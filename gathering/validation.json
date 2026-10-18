@@ -1,46 +1,87 @@
 {
   "structural_checks": "passed",
-  "unchanged_tracked_ancestor_files": 128,
-  "future_records": 99,
-  "painted_records": 9,
-  "numbered_records": 108,
+  "unchanged_tracked_ancestor_files": 163,
+  "future_records": 98,
+  "painted_records": 14,
+  "numbered_records": 112,
   "goals": 4,
   "wall": {
-    "path": "artifacts/gathering/wall-v2.png",
+    "path": "artifacts/gathering/wall-v3.png",
     "alias": "artifacts/gathering/wall.png",
     "format": "PNG RGB8",
     "width": 1254,
     "height": 1254,
-    "bytes": 3002436,
-    "sha256": "1a1d749d89e85f417a65f80b9db8b8c67e7e52d4a4c0200d15fe6de091ec3e7d"
+    "bytes": 2815196,
+    "sha256": "1dfc13ced7ee35bdbaae5439246fd231f19d62be8818ee18109a3b8d0735760e"
   },
   "preview": {
-    "path": "dist/gathering/02.jpg",
+    "path": "dist/gathering/03.jpg",
     "format": "JPEG",
     "width": 512,
     "height": 512,
-    "bytes": 97354
+    "bytes": 96809
   },
   "source_packaging": {
-    "current_wall_alias": "wall-v2.png",
+    "current_wall_alias": "wall-v3.png",
     "alias_entry_bytes": 11,
-    "duplicate_png_bytes_removed": 3002425,
+    "duplicate_png_bytes_removed": 2815185,
     "declared_output_tracked": false
   },
   "visual_review": [
-    "Square size, rock, cracks, roots, torchlight and framing visually retained.",
-    "The ancestral seated Pepe, four ochre trails and central chalk stone remain in position.",
-    "New small ochre/chalk stones on a charcoal trail between red-ochre curves above Pepe.",
-    "Pepe retains a wide mouth and big heavy-lidded eyes; rough flat worn earth pigments.",
-    "Both visible hands counted as five digits: four fingers and one thumb each; no new hands or handprints.",
-    "No observed letters, numbers, captions, signatures, logos, watermarks, borders, frames, real people or prohibited symbols."
+    "Original square rock, roots, cracks, torchlight and framing visually retained.",
+    "Seated Pepe, four red/yellow trails, chalk meeting stone and bounded pebble trail remain in position.",
+    "New charcoal evidence loop with three chalk dabs and one red ochre closure lies left of Pepe head without touching ancestral paint.",
+    "Pepe has a wide mouth and heavy-lidded eyes. Both visible hands counted as five digits: four fingers and one thumb each. No hands or stencils added.",
+    "Earth pigments only; no observed writing, captions, numbers, signatures, logos, watermarks, borders, real people, political or hateful symbols."
   ],
-  "visual_limits": "Generative editing is visually reviewed; unchanged pixels and all visual constraints are not mechanically certified. The prompt requested four small stones; the image contains five, which does not violate a requested visual constraint.",
+  "visual_limits": "Generative editing preserves the wall by visual comparison, not exact pixel identity. Structural checks do not certify visual quality.",
   "unmet_visual_requirements": [],
   "tests": {
-    "line_passed": 68,
-    "shared_passed": 20,
+    "line_passed": 122,
+    "shared_passed": 35,
     "additional_line_passed": 12,
     "expected_failures": 0
+  },
+  "cli_examples": 16,
+  "gallery_check": {
+    "passed": true,
+    "viewports": [
+      {
+        "width": 320,
+        "documentWidth": 320,
+        "cards": 112,
+        "brokenLoadedImages": [],
+        "overflowingElements": []
+      },
+      {
+        "width": 390,
+        "documentWidth": 390,
+        "cards": 112,
+        "brokenLoadedImages": [],
+        "overflowingElements": []
+      },
+      {
+        "width": 1440,
+        "documentWidth": 1440,
+        "cards": 112,
+        "brokenLoadedImages": [],
+        "overflowingElements": []
+      }
+    ],
+    "browserErrors": [],
+    "note": "Local file gallery checked without screenshots or external page requests. Full artifact links were not opened."
+  },
+  "portable_check": {
+    "portable_folder_demo_passed": true,
+    "replay": {
+      "clock_uncertainty_ms": 750,
+      "events": 2,
+      "omitted": 1,
+      "sources": 2,
+      "verified": true
+    },
+    "finding_count": 7,
+    "tampered_timeline_rejected": true,
+    "note": "Ran from a copied shared folder with no line directories in its workspace."
   }
 }

@@ -12,8 +12,18 @@
       "exit_code": 0
     },
     {
+      "suite": "line-1/tools/paired-power",
+      "tests": 11,
+      "exit_code": 0
+    },
+    {
       "suite": "line-2/tools/unicode-lantern",
       "tests": 12,
+      "exit_code": 0
+    },
+    {
+      "suite": "line-2/tools/json-lantern",
+      "tests": 17,
       "exit_code": 0
     },
     {
@@ -22,8 +32,13 @@
       "exit_code": 0
     },
     {
+      "suite": "line-3/tools/timeline-replay",
+      "tests": 20,
+      "exit_code": 0
+    },
+    {
       "suite": "line-4/tools/unit-flint",
-      "tests": 7,
+      "tests": 13,
       "exit_code": 0
     },
     {
@@ -34,6 +49,11 @@
     {
       "suite": "shared/reviewed-timeline",
       "tests": 20,
+      "exit_code": 0
+    },
+    {
+      "suite": "shared/replay-review",
+      "tests": 15,
       "exit_code": 0
     }
   ],
@@ -51,6 +71,30 @@
       "exit_code": 0,
       "sha256": "bce567dd5971bc85154a268f60207036c3c80d91ee4440da6a333851c614dc5e",
       "bytes": 9162,
+      "finding_count": 0,
+      "unicode_version": "15.0.0"
+    },
+    {
+      "source": "line-1/tools/paired-power/paired_power.py",
+      "exit_code": 0,
+      "sha256": "bf9fa35b56a50fc44624056ba10301a977d76f2421cf35f07b01710ded2126c3",
+      "bytes": 10337,
+      "finding_count": 0,
+      "unicode_version": "15.0.0"
+    },
+    {
+      "source": "line-2/tools/json-lantern/json_lantern.py",
+      "exit_code": 0,
+      "sha256": "2a30a232b22c9a85744609cce3324a83361172276e961e8195a4acd6e8c0f87e",
+      "bytes": 8071,
+      "finding_count": 0,
+      "unicode_version": "15.0.0"
+    },
+    {
+      "source": "line-3/tools/timeline-replay/timeline_replay.py",
+      "exit_code": 0,
+      "sha256": "d77a8a28268ce860aac890926720d4cd278535ff89b7930e2f6fad45acf2f0c8",
+      "bytes": 8490,
       "finding_count": 0,
       "unicode_version": "15.0.0"
     },
@@ -73,14 +117,14 @@
     {
       "source": "line-4/tools/unit-flint/unit_flint.py",
       "exit_code": 0,
-      "sha256": "8851c7ba885d621c9aa042daab3c1a959dcc025eece52e2fa7efd672c306370d",
-      "bytes": 11184,
+      "sha256": "ae71dba710f25c1940af9400253769f1efa4a83bb4ec80454be723221c46f09d",
+      "bytes": 12506,
       "finding_count": 0,
       "unicode_version": "15.0.0"
     }
   ],
-  "test_count": 100,
+  "test_count": 169,
   "line_files_unchanged": true,
-  "line_file_count": 32,
+  "line_file_count": 57,
   "line_3_fixture_note": "Unmodified source and suite copied to test/scratch/time-flint before discovery."
 }

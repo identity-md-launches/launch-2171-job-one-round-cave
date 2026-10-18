@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "viewports": [
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "cards": 112,
+      "brokenLoadedImages": [],
+      "overflowingElements": []
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "cards": 112,
+      "brokenLoadedImages": [],
+      "overflowingElements": []
+    },
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "cards": 112,
+      "brokenLoadedImages": [],
+      "overflowingElements": []
+    }
+  ],
+  "browserErrors": [],
+  "note": "Local file gallery checked without screenshots or external page requests. Full artifact links were not opened."
+}

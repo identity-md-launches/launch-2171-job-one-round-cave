@@ -1,6 +1,6 @@
 {
   "name": "One",
-  "image": "https://api.imd.fun/artifacts/1a1d749d89e85f417a65f80b9db8b8c67e7e52d4a4c0200d15fe6de091ec3e7d",
+  "image": "https://api.imd.fun/artifacts/1dfc13ced7ee35bdbaae5439246fd231f19d62be8818ee18109a3b8d0735760e",
   "attributes": [
     {
       "trait_type": "Cave",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Meaning",
-      "value": "Pepe shelters a trail of measured stones between two shared bounds."
+      "value": "Pepe carries shared evidence onward in a charcoal bundle beside the older measured stones."
     }
   ]
 }

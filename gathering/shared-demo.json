@@ -1,0 +1,247 @@
+{
+  "assessment": "review-required",
+  "data_kind": "synthetic_demonstration",
+  "digest_pin_checked": true,
+  "finding_count": 7,
+  "json_lines_checked": 2,
+  "limitations": [
+    "Replay verifies consistency, not truthful logs, completeness, author identity or collection time.",
+    "A digest only authenticates bytes when obtained independently from a trusted source.",
+    "Unicode triage is heuristic; a clean report is not a safety verdict.",
+    "Raw and decoded findings may describe the same character; counts are not unique incidents.",
+    "Decoded offsets are local to a string; structural paths are local to the cited physical JSON line.",
+    "Only JSON-looking object lines are decoded; plain log messages are scanned as raw text.",
+    "At most 100 interesting reviews, with 50 findings each, are retained; truncation is explicit.",
+    "Clock bounds are analyst assumptions; overlap does not establish causal order.",
+    "Packs contain unredacted original logs. Choose non-sensitive evidence before packing."
+  ],
+  "listings_truncated": false,
+  "pack_sha256": "d86c751d5b411f3d190fa93ebab5987f99e6163683ea62a09b9bc62bc7f7fe6a",
+  "replay": {
+    "clock_uncertainty_ms": 750,
+    "events": 2,
+    "omitted": 1,
+    "sources": 2,
+    "verified": true
+  },
+  "review_count": 4,
+  "review_errors": 0,
+  "reviews": [
+    {
+      "domain": "decoded-json-line",
+      "physical_line": 1,
+      "report": {
+        "assessment": "review-required",
+        "bytes": 78,
+        "decoded_strings": 5,
+        "finding_count": 4,
+        "findings": [
+          {
+            "decoded_sha256": "1be7ff0ba06016cbaa1cac4e12b06e16a217b0309c648b74df0dc42d243518d5",
+            "domain": "decoded-string",
+            "evidence": {
+              "byte_offset": 0,
+              "char_offset": 0,
+              "column": 1,
+              "escaped": "\\u043ewner",
+              "explanation": "Identifier mixes Latin, Greek or Cyrillic letter families; review in context.",
+              "line": 1,
+              "rule": "mixed-script-identifier",
+              "scripts": [
+                "CYRILLIC",
+                "LATIN"
+              ]
+            },
+            "location": [
+              {
+                "pair": 3,
+                "role": "key"
+              }
+            ]
+          },
+          {
+            "domain": "object-key",
+            "escaped": "\\u043ewner",
+            "explanation": "Distinct keys in this object share the limited visual skeleton.",
+            "first_escaped": "owner",
+            "first_location": [
+              {
+                "pair": 2,
+                "role": "key"
+              }
+            ],
+            "location": [
+              {
+                "pair": 3,
+                "role": "key"
+              }
+            ],
+            "rule": "lookalike-key-collision",
+            "skeleton": "owner"
+          },
+          {
+            "decoded_sha256": "f6fc7d03babf42ce7c717562c459282b21323650dab3376ae8f62fba4a518787",
+            "domain": "decoded-string",
+            "evidence": {
+              "byte_offset": 10,
+              "char_offset": 10,
+              "column": 11,
+              "escaped": "\\u043ewner",
+              "explanation": "Identifier mixes Latin, Greek or Cyrillic letter families; review in context.",
+              "line": 1,
+              "rule": "mixed-script-identifier",
+              "scripts": [
+                "CYRILLIC",
+                "LATIN"
+              ]
+            },
+            "location": [
+              {
+                "pair": 1,
+                "role": "value"
+              }
+            ]
+          },
+          {
+            "decoded_sha256": "f6fc7d03babf42ce7c717562c459282b21323650dab3376ae8f62fba4a518787",
+            "domain": "decoded-string",
+            "evidence": {
+              "byte_offset": 10,
+              "char_offset": 10,
+              "column": 11,
+              "escaped": "\\u043ewner",
+              "explanation": "Distinct identifiers share this tool's limited visual skeleton.",
+              "first": {
+                "byte_offset": 0,
+                "char_offset": 0,
+                "column": 1,
+                "escaped": "owner",
+                "line": 1
+              },
+              "line": 1,
+              "rule": "lookalike-collision",
+              "skeleton": "owner"
+            },
+            "location": [
+              {
+                "pair": 1,
+                "role": "value"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "Heuristic triage, not a safety verdict or full Unicode confusables coverage.",
+          "Identifier comparisons are local to each string; key comparisons are local to each object.",
+          "Raw and decoded findings can describe the same character and are counted separately.",
+          "Decoded locations are structural paths, not source-token byte offsets.",
+          "Only strict UTF-8 JSON with paired surrogate escapes is accepted; no JSONL or BOM."
+        ],
+        "location_contract": "Object pair and array indexes are zero-based. Decoded evidence offsets refer only to that decoded string; raw-json offsets refer to original bytes.",
+        "scanner_version": "1.0.0",
+        "schema_version": 1,
+        "sha256": "0338d4e5bc390fa108d12d0eba4be451941b3d84b1dff38eed8f4bd1df01f5a9",
+        "source": "<physical-json-line>",
+        "tool": "json-lantern",
+        "tool_version": "1.0.0",
+        "truncated": false,
+        "unicode_version": "15.0.0",
+        "values": 5
+      },
+      "source_escaped": "queue.jsonl"
+    },
+    {
+      "domain": "decoded-json-line",
+      "physical_line": 2,
+      "report": {
+        "assessment": "review-required",
+        "bytes": 76,
+        "decoded_strings": 5,
+        "finding_count": 3,
+        "findings": [
+          {
+            "domain": "object-key",
+            "escaped": "owner",
+            "explanation": "Repeated decoded key; consumers may discard an earlier value.",
+            "first_location": [
+              {
+                "pair": 2,
+                "role": "key"
+              }
+            ],
+            "location": [
+              {
+                "pair": 3,
+                "role": "key"
+              }
+            ],
+            "rule": "duplicate-key"
+          },
+          {
+            "decoded_sha256": "1927f751064bf5a0ab4168b03116c0097487c185091d924acce3236d4d05c450",
+            "domain": "decoded-string",
+            "evidence": {
+              "byte_offset": 7,
+              "char_offset": 7,
+              "codepoint": "U+202E",
+              "column": 8,
+              "escaped": "\\u202e",
+              "explanation": "Explicit bidirectional control can change visual reading order.",
+              "line": 1,
+              "rule": "bidi-control",
+              "unicode_name": "RIGHT-TO-LEFT OVERRIDE"
+            },
+            "location": [
+              {
+                "pair": 1,
+                "role": "value"
+              }
+            ]
+          },
+          {
+            "decoded_sha256": "1927f751064bf5a0ab4168b03116c0097487c185091d924acce3236d4d05c450",
+            "domain": "decoded-string",
+            "evidence": {
+              "byte_offset": 14,
+              "char_offset": 12,
+              "codepoint": "U+202C",
+              "column": 13,
+              "escaped": "\\u202c",
+              "explanation": "Explicit bidirectional control can change visual reading order.",
+              "line": 1,
+              "rule": "bidi-control",
+              "unicode_name": "POP DIRECTIONAL FORMATTING"
+            },
+            "location": [
+              {
+                "pair": 1,
+                "role": "value"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "Heuristic triage, not a safety verdict or full Unicode confusables coverage.",
+          "Identifier comparisons are local to each string; key comparisons are local to each object.",
+          "Raw and decoded findings can describe the same character and are counted separately.",
+          "Decoded locations are structural paths, not source-token byte offsets.",
+          "Only strict UTF-8 JSON with paired surrogate escapes is accepted; no JSONL or BOM."
+        ],
+        "location_contract": "Object pair and array indexes are zero-based. Decoded evidence offsets refer only to that decoded string; raw-json offsets refer to original bytes.",
+        "scanner_version": "1.0.0",
+        "schema_version": 1,
+        "sha256": "62d39eb63b9fb076dd423abfd8c2e85cfada10b9185ada524c3f97c7ff0b0edb",
+        "source": "<physical-json-line>",
+        "tool": "json-lantern",
+        "tool_version": "1.0.0",
+        "truncated": false,
+        "unicode_version": "15.0.0",
+        "values": 5
+      },
+      "source_escaped": "queue.jsonl"
+    }
+  ],
+  "schema_version": 1,
+  "tampered_timeline_rejected": true,
+  "tool": "replay-review"
+}

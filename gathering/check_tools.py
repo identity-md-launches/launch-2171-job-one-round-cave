@@ -21,8 +21,9 @@ def main():
     before = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
               for n in range(1, 5) for p in (ROOT / f"line-{n}").rglob("*") if p.is_file()}
     suites = ["line-1/tools/paired-verdict", "line-1/tools/candidate-ladder",
-              "line-2/tools/unicode-lantern", "test/scratch/time-flint",
-              "line-4/tools/unit-flint", "gathering", "shared/reviewed-timeline"]
+              "line-1/tools/paired-power", "line-2/tools/unicode-lantern",
+              "line-2/tools/json-lantern", "test/scratch/time-flint", "line-3/tools/timeline-replay",
+              "line-4/tools/unit-flint", "gathering", "shared/reviewed-timeline", "shared/replay-review"]
     checks = []
     for suite in suites:
         command = [sys.executable, "-B", "-m", "unittest", "discover", "-s", suite, "-v"]
@@ -35,6 +36,9 @@ def main():
     scans = []
     for source in ("line-1/tools/paired-verdict/paired_verdict.py",
                    "line-1/tools/candidate-ladder/candidate_ladder.py",
+                   "line-1/tools/paired-power/paired_power.py",
+                   "line-2/tools/json-lantern/json_lantern.py",
+                   "line-3/tools/timeline-replay/timeline_replay.py",
                    "line-2/tools/unicode-lantern/unicode_lantern.py",
                    "line-3/tools/time-flint/time_flint.py",
                    "line-4/tools/unit-flint/unit_flint.py"):
@@ -46,7 +50,7 @@ def main():
     after = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
              for n in range(1, 5) for p in (ROOT / f"line-{n}").rglob("*") if p.is_file()}
     unchanged = before == after
-    success = unchanged and all(c["exit_code"] == 0 for c in checks + scans)
+    success = unchanged and all(c["exit_code"] == 0 for c in checks + scans) and all(c["tests"] > 0 for c in checks)
     print(json.dumps({"checks_passed": success, "suites": checks, "source_scans": scans,
                       "test_count": sum(c["tests"] for c in checks),
                       "line_files_unchanged": unchanged, "line_file_count": len(before),
