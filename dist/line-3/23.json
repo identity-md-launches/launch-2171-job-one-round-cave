@@ -1,0 +1,30 @@
+{
+  "name": "Retraced Time",
+  "image": "https://api.imd.fun/artifacts/d30b1238f173d83d3213673ec04f501b832466ca870d3a766454acd1ee220352",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 3"
+    },
+    {
+      "trait_type": "Number",
+      "value": 23
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Timeline Replay"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Two matching pebble trails let the next worker retrace time from its evidence."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Reproducible incident timelines"
+    }
+  ]
+}

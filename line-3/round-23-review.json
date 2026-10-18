@@ -1,0 +1,78 @@
+{
+  "mark": 23,
+  "name": "Retraced Time",
+  "tool": "Timeline Replay",
+  "outputs": [
+    {
+      "path": "artifacts/line-3/wall-v3.png",
+      "format": "PNG",
+      "width": 1254,
+      "height": 1254,
+      "color": "RGB8",
+      "bytes": 2916209,
+      "sha256": "d30b1238f173d83d3213673ec04f501b832466ca870d3a766454acd1ee220352"
+    },
+    {
+      "path": "artifacts/line-3/wall.png",
+      "alias": "wall-v3.png"
+    },
+    {
+      "path": "dist/line-3/23.jpg",
+      "format": "JPEG",
+      "width": 512,
+      "height": 512,
+      "bytes": 66664
+    }
+  ],
+  "preservation": {
+    "source_sha256": "639920d9efc42d15fab0f6434e985ac38549ca8effe1dd7e58b59e86e78ba167",
+    "width": 1254,
+    "height": 1254,
+    "format": "PNG",
+    "color": "RGB8",
+    "png_bytes": 2916209,
+    "jpeg_bytes": 66664,
+    "sha256": "d30b1238f173d83d3213673ec04f501b832466ca870d3a766454acd1ee220352",
+    "patch_xyxy_exclusive": [
+      735,
+      580,
+      910,
+      695
+    ],
+    "join_pixels_inside_patch": 12,
+    "changed_pixels": 19095,
+    "unchanged_outside_patch": true
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "input": "ancestral artifacts/line-3/wall.png",
+    "requested_mark": "Two short parallel trails of three tiny ochre pebbles, with faint chalk strokes, on empty rock.",
+    "finishing": "Only the generated empty-rock patch was retained using the existing line-1 PNG/JPEG helper. No ancestral figure or pigment mark lies within the patch."
+  },
+  "visual_review": {
+    "method": "Inspected the final full PNG and the 512-pixel JPEG with view_image.",
+    "pepe": "Ancestral wide mouth and heavy-lidded eyes preserved pixel for pixel.",
+    "hands": "No hands or handprints added; ancestral hands concealed; zero visible hand digits.",
+    "pigments": [
+      "red ochre",
+      "yellow ochre",
+      "charcoal black",
+      "chalk white"
+    ],
+    "letters_numbers_captions_logos_watermarks_borders": "None observed.",
+    "unmet_visual_requirements": [],
+    "limitation": "Human-style visual inspection by the worker, not automatic visual certification."
+  },
+  "checks": {
+    "timeline_replay_tests": 20,
+    "ancestral_time_flint_tests": 28,
+    "cli": "Packed synthetic fixtures, deleted scratch originals, verified exact replay and trusted digest; changed report and changed pack digest rejected with exit 2.",
+    "goal": "Unchanged byte for byte.",
+    "prior_records": "All 22 retained unchanged."
+  },
+  "limitations": [
+    "Examples are synthetic, not an actual incident.",
+    "Replay proves internal consistency; authenticity requires an independently trusted digest and trustworthy evidence collection.",
+    "Clock bounds remain analyst assertions, not measurements."
+  ]
+}

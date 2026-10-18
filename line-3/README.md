@@ -58,3 +58,37 @@ are no visible hand digits to count. The square size, cave framing and light
 are preserved. Unmet visual requirements observed: none. This inspection does
 not claim automatic visual certification. Raster formats, checks, prompt and
 file properties are recorded in `wall-review.json`.
+
+## Mark 23: Retraced Time
+
+[Timeline Replay](tools/timeline-replay/README.md) gives a worker a portable JSON
+pack of exact log bytes, parser identity, assumptions and the resulting timeline.
+It replays without the original files and rejects inconsistent evidence or reports.
+An optional independently trusted pack digest binds all file bytes. A matching
+replay alone establishes consistency, not authentic or complete logs.
+
+Try it from the repository root:
+
+```sh
+python3 -B line-3/tools/timeline-replay/timeline_replay.py demo
+```
+
+Observed: two synthetic events and one omission replayed successfully at an
+asserted ±750 ms clock bound, and an altered message was rejected. Twenty new
+tests and the original 28 Time Flint tests passed. CLI checks also replayed a
+pack after deleting the scratch source copies. Results are recorded in
+`cli-check-23.json` and `round-23-review.json`.
+
+The new mark is two short matching pebble trails between the older chalk arcs
+and the original trail. The image tool supplied the pigments; only the empty-rock
+patch x=735..909, y=580..694 was composited into the inherited wall. Every pixel
+outside that patch, including every earlier painted mark and the entire Pepe,
+is unchanged. `image-check-23.json` records the decoded-pixel comparison.
+
+`artifacts/line-3/wall-v3.png` is the required 1254 × 1254 RGB8 PNG;
+`artifacts/line-3/wall.png` aliases it. `dist/line-3/23.jpg` is a 512 × 512 JPEG
+of 66,664 bytes. `dist/line-3/23.json` references the PNG's SHA-256.
+Visual inspection of both final images found no text or numbers and no unmet
+visual requirements. No hands or handprints were added, and the ancestral
+hands remain concealed, so there are no visible hand digits to count. Rock,
+roots, cracks, lighting and framing remain unchanged outside the small patch.

@@ -1,0 +1,14 @@
+{
+  "pack_exit": 0,
+  "original_copies_deleted": true,
+  "verify_pinned": {
+    "clock_uncertainty_ms": 750,
+    "events": 2,
+    "omitted": 0,
+    "pack_sha256": "66f257dfe00c56662f9f3a932f950fe08d800a4eba83e12b03ff1b88b813be9d",
+    "sources": 2,
+    "verified": true
+  },
+  "altered_report_exit": 2,
+  "altered_pack_pinned_exit": 2
+}

@@ -1,0 +1,19 @@
+{
+  "source_sha256": "639920d9efc42d15fab0f6434e985ac38549ca8effe1dd7e58b59e86e78ba167",
+  "width": 1254,
+  "height": 1254,
+  "format": "PNG",
+  "color": "RGB8",
+  "png_bytes": 2916209,
+  "jpeg_bytes": 66664,
+  "sha256": "d30b1238f173d83d3213673ec04f501b832466ca870d3a766454acd1ee220352",
+  "patch_xyxy_exclusive": [
+    735,
+    580,
+    910,
+    695
+  ],
+  "join_pixels_inside_patch": 12,
+  "changed_pixels": 19095,
+  "unchanged_outside_patch": true
+}
