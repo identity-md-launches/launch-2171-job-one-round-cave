@@ -1,0 +1,75 @@
+{
+  "tool": "Unit Flint exact claim checker",
+  "unittest": {
+    "passed": 13,
+    "failed": 0,
+    "command": "python3 -B -m unittest discover -s line-4/tools/unit-flint -v"
+  },
+  "subprocess_cases": [
+    {
+      "expression": "10 km / 2 h",
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "expression": "10 km / 2 h",
+      "expected_exit": 1,
+      "actual_exit": 1
+    },
+    {
+      "expression": "0.1 + 0.2",
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "expression": "1 m / 3 s",
+      "expected_exit": 1,
+      "actual_exit": 1
+    },
+    {
+      "expression": "0 m",
+      "expected_exit": 2,
+      "actual_exit": 2
+    },
+    {
+      "expression": "1 m",
+      "expected_exit": 2,
+      "actual_exit": 2
+    },
+    {
+      "expression": "1 m",
+      "expected_exit": 2,
+      "actual_exit": 2
+    }
+  ],
+  "wall": {
+    "path": "artifacts/line-4/wall-v3.png",
+    "format": "PNG RGB8",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 2656384,
+    "sha256": "0ba5ea8f821d7c9cde3f0ed5546d87ed5ddcaa3e09eb7d6da892f5bf99a73d59",
+    "chunk_crcs_valid": true
+  },
+  "preview": {
+    "path": "dist/line-4/23.jpg",
+    "format": "baseline JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 82368
+  },
+  "goal_unchanged": true,
+  "older_records_unchanged": 24,
+  "ancestral_png_unchanged": true,
+  "scope_check_passed": true,
+  "new_record_shape_and_hash_valid": true,
+  "declared_output_untracked": true,
+  "visual_review": {
+    "full_wall_and_preview_inspected": true,
+    "new_mark": "Two shallow ochre bowls, each holding three charcoal stones.",
+    "visible_hands": "Five digits on each inherited hand; no hands added.",
+    "preservation": "Ancestral painting, framing, rock, roots, cracks and light visually retained.",
+    "unmet_visual_requirements": [],
+    "limitation": "Visual review of a generative edit, not pixel-identical preservation."
+  }
+}

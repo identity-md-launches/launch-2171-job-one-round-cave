@@ -1,0 +1,30 @@
+{
+  "name": "Two measures, one truth",
+  "image": "https://api.imd.fun/artifacts/0ba5ea8f821d7c9cde3f0ed5546d87ed5ddcaa3e09eb7d6da892f5bf99a73d59",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 4"
+    },
+    {
+      "trait_type": "Number",
+      "value": 23
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Unit Flint exact claim checker"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Two bowls of matching stones check that different measures tell the same truth."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Exact arithmetic with explicit unit dimensions"
+    }
+  ]
+}

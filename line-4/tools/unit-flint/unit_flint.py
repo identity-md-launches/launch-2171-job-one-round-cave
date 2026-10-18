@@ -275,10 +275,24 @@ def main(argv: list[str] | None = None) -> int:
     cli.add_argument("expression", help='e.g. "1.5 km + 350 m"')
     cli.add_argument("--to", metavar="UNIT", help='target unit, e.g. "m" or "km/h"')
     cli.add_argument("--json", action="store_true", help="emit machine-readable exact result")
+    cli.add_argument("--expect", metavar="EXPRESSION",
+                     help="check exact equality to a claimed quantity (exit 1 if unequal)")
     args = cli.parse_args(argv)
     source = args.expression
     try:
         result = Parser(source).parse()
+        expected = None
+        difference = None
+        if args.expect is not None:
+            source = args.expect
+            expected = Parser(source).parse()
+            if expected.dims != result.dims:
+                raise UnitError(
+                    f"expected dimension {dimensions(expected.dims)} does not match result {dimensions(result.dims)}",
+                    0,
+                )
+            difference = Parser.bounded(
+                Quantity(result.value - expected.value, result.dims), 0)
         if args.to:
             source = args.to
             target = Parser(source, target=True).parse()
@@ -305,11 +319,23 @@ def main(argv: list[str] | None = None) -> int:
         "base_unit": dimensions(result.dims),
         "dimensions": dict(zip(("length", "mass", "time", "data"), result.dims)),
     }
+    if expected is not None:
+        output["check"] = {
+            "expression": args.expect,
+            "expected_base_value": exact_decimal(expected.value),
+            "difference_base_value": exact_decimal(difference.value),
+            "base_unit": dimensions(result.dims),
+            "matches": difference.value == 0,
+        }
     if args.json:
         print(json.dumps(output, separators=(",", ":")))
     else:
         print(f"{output['value']} {label}")
-    return 0
+        if expected is not None:
+            verdict = "match" if difference.value == 0 else "mismatch"
+            print(f"{verdict}: expected {args.expect}; result - expected = "
+                  f"{exact_decimal(difference.value)} {dimensions(result.dims)}")
+    return 1 if expected is not None and difference.value != 0 else 0
 
 
 if __name__ == "__main__":

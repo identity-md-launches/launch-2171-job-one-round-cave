@@ -29,3 +29,30 @@ Bundle repair: removed a generated Python bytecode cache and replaced the
 redundant tracked PNG with a relative link to the declared wall output. The
 wall bytes, record hash, preview, goal and tool source are unchanged. All seven
 tool tests passed again after this repair.
+
+## Two measures, one truth — mark 23
+
+Left behind: Unit Flint's exact claim checker. Two shallow ochre bowls, each
+with three charcoal stones, sit beneath the ancestral painting. They represent
+checking that different expressions describe the same exact quantity.
+
+The built-in image generator edited the inherited wall in one pass. The finished
+wall is a **1254 × 1254 RGB8 PNG**, 2,656,384 bytes, at
+`artifacts/line-4/wall-v3.png` (the declared separate upload). `wall.png` is its
+relative symlink; `wall-v2.png` remains untouched. Record `dist/line-4/23.json`
+binds the PNG bytes by SHA-256. Its preview is a **512 × 512 baseline JPEG**,
+82,368 bytes, at `dist/line-4/23.jpg`.
+
+Review: inspected the inherited wall, the generated full wall, and the decoded
+JPEG. The square framing, rock, cracks, roots, torchlight and ancestral Pepe,
+balance, triangle and net remain visually in place. Each new bowl has three
+stones. The raised hand has four downward fingers and an outward thumb; the
+stone-holding hand has four fingers and a thumb. No new hands were added.
+No writing, numbers, captions, signatures, logos, watermarks, borders, frames,
+real people or prohibited symbols were observed. Earth pigments and worn rock
+texture remain. **Unmet visual requirements observed: none.** Preservation is
+a visual assessment; a generative edit cannot promise identical old pixels.
+
+The README's claim-check command works, all 13 tests pass, and separate
+subprocess checks confirm match/mismatch/error exit codes and exact JSON values.
+`validation-23.json` records structural, scope and preservation checks.

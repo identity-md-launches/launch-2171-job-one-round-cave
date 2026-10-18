@@ -42,3 +42,45 @@ not exhaustive parser correctness or a real-world measurement claim.
 grammar. Write `2 * m^2` for two square metres. Use `--` before an expression
 beginning with several minus signs so argparse treats it as an expression.
 There are no file inputs, environment lookups, network requests or dependencies.
+
+## Exact claim checking (mark 23)
+
+Check a result somebody proposes before trusting it:
+
+```sh
+python3 -B line-4/tools/unit-flint/unit_flint.py '10 km / 2 h' --expect '5 km/h' --to m/s --json
+```
+
+Tried locally: exit **0**, value `25/18 m/s`, and `check.matches: true`.
+Changing the claim to `6 km/h` gives exit **1**, `matches: false`, and exact
+`difference_base_value: "-5/18"` in `m*s^-1`. The difference always means
+**result minus expected**, in base units, regardless of `--to`.
+
+`--expect` accepts the same bounded grammar as the calculation. The quantities
+must have identical dimensions; even `0 m` and `0 s` are incompatible.
+Exit **2** means invalid syntax, incompatible dimensions, invalid conversion,
+or an exceeded arithmetic budget, and emits a diagnostic on stderr with no
+partial stdout. A malformed expectation points into the expectation; a bad
+conversion points into the target. Both the expectation and subtraction use
+the existing resource budgets. `--expect=''` is an error, not a skipped check.
+
+This checks exact equality, with no tolerance or rounding. Thus `0.1 + 0.2`
+matches `0.3`, but `1 m / 3 s` does not match `0.3333333333333333 m/s`.
+It checks what the supplied expressions say, not whether a measurement,
+physical assumption, or unit choice is correct. No live token valuation or
+currency arithmetic is involved.
+
+Without `--expect`, the existing output and exit behavior are unchanged.
+With it, JSON gains one `check` object containing the claim (`expression`),
+`expected_base_value`, `difference_base_value`, `base_unit`, and boolean
+`matches`. Exact values are strings, including rational fractions. Plain
+output adds a readable match/mismatch line. For a negative expectation use
+`--expect='-1 m'`; for a negative positional expression, put options first
+and use `--` before the expression.
+
+Run all regression checks with the unittest command above. All **13 tests**
+passed locally: the seven existing tests plus six claim-check tests covering
+mixed units, derived dimensions, exact fractions, negative and zero values,
+rounded claims, parser budgets, diagnostics, conversion, compatibility, and
+300 seeded matching/mismatching CLI evaluations. The tests call `main()` with
+captured streams; real subprocess exit codes were also checked separately.

@@ -10,6 +10,108 @@ from unit_flint import Parser, UnitError, exact_decimal, main
 
 
 class UnitFlintTests(unittest.TestCase):
+    def run_cli(self, args):
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            status = main(args)
+        return status, out.getvalue(), err.getvalue()
+
+    def test_exact_claims_across_units(self):
+        for expression, claim in [
+            ('0.1 + 0.2', '0.3'),
+            ('10 km / 2 h', '5 km/h'),
+            ('1 L', '1000 mL'),
+            ('1 J / 1 s', '1 W'),
+            ('1 in', '2.54 cm'),
+            ('-1 m', '-100 cm'),
+            ('1 m - 100 cm', '0 km'),
+            ('1 m / 3 s', '100 cm / 3 s'),
+            ('2 * m^2', '20000 * cm^2'),
+        ]:
+            with self.subTest(expression=expression, claim=claim):
+                status, out, err = self.run_cli([
+                    '--json', '--expect=' + claim, '--', expression])
+                self.assertEqual(status, 0)
+                self.assertEqual(err, '')
+                check = json.loads(out)['check']
+                self.assertIs(check['matches'], True)
+                self.assertEqual(check['difference_base_value'], '0')
+
+    def test_mismatch_is_exact_and_machine_readable(self):
+        for expression, claim, difference in [
+            ('0.1 + 0.2', '0.30000000000000001', '-0.00000000000000001'),
+            ('1 m / 3 s', '0.3333333333333333 m/s', '1/30000000000000000'),
+            ('2 m^2', '2 * m^2', '2'),
+            ('0 s', '1 s', '-1'),
+        ]:
+            with self.subTest(expression=expression):
+                status, out, err = self.run_cli([
+                    expression, '--expect=' + claim, '--json'])
+                self.assertEqual(status, 1)
+                self.assertEqual(err, '')
+                check = json.loads(out)['check']
+                self.assertIs(check['matches'], False)
+                self.assertEqual(check['difference_base_value'], difference)
+
+    def test_claim_errors_have_no_partial_result(self):
+        for claim, message in [
+            ('1 s', 'expected dimension s does not match result m'),
+            ('0', 'expected dimension 1 does not match result m'),
+            ('', 'expected a number'),
+            ('3 unknown', 'unknown unit'),
+            ('1 / 0', 'division by zero'),
+            ('-' * 1100 + '1', 'tokens'),
+            ('(' * 40 + '1' + ')' * 40, 'nesting'),
+            ('(1e100)^12', 'arithmetic budget'),
+        ]:
+            with self.subTest(claim=claim[:40]):
+                status, out, err = self.run_cli(['1 m', '--expect=' + claim, '--json'])
+                self.assertEqual(status, 2)
+                self.assertEqual(out, '')
+                self.assertIn(message, err)
+                self.assertIn('\n  ' + claim + '\n', err)
+                self.assertNotIn('Traceback', err)
+
+    def test_claim_and_conversion_are_independent(self):
+        status, out, err = self.run_cli([
+            '10 km / 2 h', '--expect', '5 km/h', '--to', 'm/s', '--json'])
+        self.assertEqual((status, err), (0, ''))
+        result = json.loads(out)
+        self.assertEqual(result['value'], '25/18')
+        self.assertEqual(result['check']['expected_base_value'], '25/18')
+        status, out, err = self.run_cli([
+            '1 m', '--expect', '100 cm', '--to', 's', '--json'])
+        self.assertEqual(status, 2)
+        self.assertEqual(out, '')
+        self.assertIn('\n  s\n', err)
+
+    def test_claim_plain_output_and_legacy_shape(self):
+        status, out, err = self.run_cli(['1 m', '--expect', '100 cm'])
+        self.assertEqual((status, err), (0, ''))
+        self.assertEqual(out, '1 m\nmatch: expected 100 cm; result - expected = 0 m\n')
+        status, out, err = self.run_cli(['1 m', '--expect', '2 m'])
+        self.assertEqual((status, err), (1, ''))
+        self.assertIn('mismatch:', out)
+        status, out, err = self.run_cli(['1 m', '--json'])
+        self.assertEqual((status, err), (0, ''))
+        self.assertEqual(set(json.loads(out)), {
+            'expression', 'value', 'unit', 'base_value', 'base_unit', 'dimensions'})
+
+    def test_seeded_claim_conversion_checks(self):
+        rng = random.Random(738)
+        for _ in range(150):
+            amount = rng.randrange(-10000, 10001)
+            expression = f'{amount} cm'
+            claim = f'{amount}/100 * m'
+            status, out, err = self.run_cli([
+                '--expect=' + claim, '--json', '--', expression])
+            self.assertEqual((status, err), (0, ''))
+            self.assertIs(json.loads(out)['check']['matches'], True)
+            status, out, err = self.run_cli([
+                '--expect=' + f'{amount + 1}/100 * m', '--json', '--', expression])
+            self.assertEqual((status, err), (1, ''))
+            self.assertEqual(json.loads(out)['check']['difference_base_value'], '-0.01')
+
     def test_exact_arithmetic_and_conversions(self):
         for expression, expected, dims in [
             ('0.1 + 0.2', Fraction(3, 10), (0, 0, 0, 0)),
