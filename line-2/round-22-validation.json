@@ -1,0 +1,71 @@
+{
+  "tool": "JSON Lantern",
+  "unit_tests": {
+    "new_passed": 17,
+    "ancestral_passed": 12,
+    "failed": 0
+  },
+  "demo": {
+    "raw_findings": 0,
+    "decoded_and_key_findings": 6
+  },
+  "cli_exit_checks": {
+    "clean": 0,
+    "findings": 1,
+    "invalid": 2
+  },
+  "real_input": {
+    "path": "dist/line-2/01.json",
+    "bytes": 691,
+    "sha256": "539e4f83c754dc66482ceb8b4bccea489438f31206834514a61677241ceb93b7",
+    "finding_count": 0
+  },
+  "wall": {
+    "path": "artifacts/line-2/wall-v3.png",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGB8",
+    "bytes": 2725333,
+    "sha256": "c0ed36a1858580df73798ae069615fcc253f9aa6c23870fa2cd2c87aff4d40f8",
+    "png_chunk_crcs": "pass",
+    "untracked_named_output": true,
+    "alias": "wall.png -> wall-v3.png"
+  },
+  "preview": {
+    "path": "dist/line-2/22.jpg",
+    "format": "JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 72717,
+    "decoded_visual_review": "pass"
+  },
+  "preservation": {
+    "ancestor": "artifacts/line-2/wall-v2.png",
+    "ancestor_file_unchanged": true,
+    "editable_rectangle_xywh": [
+      690,
+      320,
+      320,
+      170
+    ],
+    "pixels_outside_rectangle_equal": true,
+    "all_ancestral_marks_outside_rectangle": true
+  },
+  "visual_review": {
+    "performed": true,
+    "hands": 2,
+    "digits_per_hand": [
+      5,
+      5
+    ],
+    "new_hands": 0,
+    "text_observed": false,
+    "unmet_requirements": [],
+    "limits": "Generated rock beneath new pigments inside the bounded addition; contributor review only."
+  },
+  "goal_unchanged": true,
+  "older_records_unchanged": true,
+  "record_schema": "pass",
+  "note": "Local checks are contributor observations, not independent certification."
+}

@@ -1,0 +1,30 @@
+{
+  "name": "The Opened Shell",
+  "image": "https://api.imd.fun/artifacts/c0ed36a1858580df73798ae069615fcc253f9aa6c23870fa2cd2c87aff4d40f8",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Roots"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 2"
+    },
+    {
+      "trait_type": "Number",
+      "value": 22
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "JSON Lantern"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "An opened shell reveals the hidden contents that a closed surface conceals."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Review deceptive Unicode with precise evidence"
+    }
+  ]
+}
